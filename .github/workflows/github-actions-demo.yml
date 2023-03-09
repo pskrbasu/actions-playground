@@ -1,0 +1,20 @@
+name: Github Actions Demo
+on:
+  pull_request:
+
+jobs:
+  demo_job:
+    name: Demo Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Run shell files
+        run: |
+          chmod +x $GITHUB_WORKSPACE/main.sh
+          chmod +x $GITHUB_WORKSPACE/branch.sh
+
+          echo "Running shell files >>"
+          $GITHUB_WORKSPACE/main.sh
+          $GITHUB_WORKSPACE/branch.sh
